@@ -1,5 +1,8 @@
+import { URL } from "../../../assets/constants/Fixtires";
+
 export const editLicence = ({ params }) => {
   const { id, items } = params;
+  const apiURL = URL.concat("editlicense");
 
   const options = {
     method: "POST",
@@ -12,9 +15,7 @@ export const editLicence = ({ params }) => {
     }),
   };
 
-  const url = new URL("https://wsuno.xyz/api/editlicense");
-
-  fetch(url, options)
+  fetch(apiURL, options)
     .then((res) => res.json())
     .then((data) => {
       if (!data.OK) {

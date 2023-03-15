@@ -1,10 +1,12 @@
 import { normolizeEntities } from "../../helpers/normalizeEntites";
 import { userHistorySliceActions } from "..";
 import { selectUserHistory } from "../selectors";
+import { URL } from "../../../assets/constants/Fixtires";
 
 export const getHistoryUserIfNotExist =
   ({ id }) =>
   (dispatch, getState) => {
+    const apiURL = URL.concat("gethistoryusr");
     if (selectUserHistory(getState())[id]) {
       return;
     }
@@ -20,9 +22,7 @@ export const getHistoryUserIfNotExist =
     };
     dispatch(userHistorySliceActions.startLoading());
 
-    const url = new URL("https://wsuno.xyz/api/gethistoryusr");
-
-    fetch(url, options)
+    fetch(apiURL, options)
       .then((res) => res.json())
       .then((data) => {
         if (!data.OK) {

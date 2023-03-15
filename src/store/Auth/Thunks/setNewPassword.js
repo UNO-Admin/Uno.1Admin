@@ -1,8 +1,10 @@
 import { authSliceActions } from "..";
+import { URL } from "../../../assets/constants/Fixtires";
 
 export const setNewPassword =
   ({ pass, id, newPass }) =>
   (dispatch) => {
+    const apiURL = URL.concat("setNewPassword");
     const options = {
       method: "POST",
       headers: {
@@ -15,7 +17,7 @@ export const setNewPassword =
       }),
     };
 
-    fetch("https://wsuno.xyz/api/setNewPassword", options)
+    fetch(apiURL, options)
       .then((res) => res.json())
       .then((data) => {
         if (!data.OK) {

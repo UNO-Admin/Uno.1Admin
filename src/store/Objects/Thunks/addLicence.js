@@ -1,5 +1,8 @@
+import { URL } from "../../../assets/constants/Fixtires";
+
 export const addLicence = ({ params }) => {
   const { idorg, iditem, klv, dtstart, dtend, price, amount, items } = params;
+  const apiURL = URL.concat("addlicense");
 
   const options = {
     method: "POST",
@@ -17,14 +20,12 @@ export const addLicence = ({ params }) => {
       items,
     }),
   };
+
   console.log(options.body);
 
-  const url = new URL("https://wsuno.xyz/api/addlicense");
-
-  fetch(url, options)
+  fetch(apiURL, options)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       if (!data.OK) {
         throw Error(data.error);
       }

@@ -15,10 +15,7 @@ function App() {
         <Route index element={<Auth />} />
         <Route path={ROUTES.forgot} element={<Forgot />} />
         <Route path={ROUTES.recover} element={<Recover />} />
-        <Route
-          path="/*"
-          element={<Layout />} // nested routes for folders
-        />
+        <Route path="/*" element={<Layout />} />
       </Routes>
     </Provider>
   );

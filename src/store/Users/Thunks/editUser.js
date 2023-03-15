@@ -1,8 +1,10 @@
+import { URL } from "../../../assets/constants/Fixtires";
 import { loadUsers } from "./loadUsers";
 
 export const editUser =
   ({ id, name, phone, email, idAccess }) =>
   (dispatch) => {
+    const apiURL = URL.concat("editUser");
     const options = {
       method: "POST",
       headers: {
@@ -17,7 +19,7 @@ export const editUser =
       }),
     };
 
-    fetch("https://wsuno.xyz/api/editUser", options)
+    fetch(apiURL, options)
       .then((res) => res.json())
       .then((data) => {
         if (!data.OK) {

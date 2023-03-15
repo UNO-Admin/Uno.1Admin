@@ -1,7 +1,9 @@
 import { normolizeEntities } from "../../helpers/normalizeEntites";
 import { objectPricesSliceActions } from "..";
+import { URL } from "../../../assets/constants/Fixtires";
 
 export const getPackagePrices = (dispatch) => {
+  const apiURL = URL.concat("getObjectsPrices");
   const options = {
     method: "POST",
     headers: {
@@ -10,9 +12,7 @@ export const getPackagePrices = (dispatch) => {
   };
   dispatch(objectPricesSliceActions.startLoading());
 
-  const url = new URL("https://wsuno.xyz/api/getObjectsPrices");
-
-  fetch(url, options)
+  fetch(apiURL, options)
     .then((res) => res.json())
     .then((data) => {
       if (!data.OK) {

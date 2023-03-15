@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../assets/constants/Fixtires";
 import { dateDiff } from "../../helpers/getDiffDates";
 import { separateAmount } from "../../helpers/separateAmount.ts";
@@ -11,6 +10,7 @@ import styles from "./styles.module.css";
 import { formatDate } from "../../helpers/formatDate.ts";
 import { getStyleByLeftMonths } from "./helpers/getStyleBuLeftMonth";
 import { getMaxDate } from "../../helpers/getMaxDate.ts";
+import { useNavigate } from "react-router-dom";
 
 export const ObjectDataContainer = ({ id, selectedRow }) => {
   const navigate = useNavigate();

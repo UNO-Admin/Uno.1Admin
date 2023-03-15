@@ -1,25 +1,16 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import styles from "./styles.module.css";
-import { Option } from "../../UI/Option/Option";
 import { SelectedCity } from "../SelectedCities/SelectedCities";
 
-export const InputDataSelect = ({
-  setForm,
-  label,
-  availableCities,
-  cityFranIds,
-  city,
-}) => {
+export const InputDataSelect = ({ setForm, label, availableCities, city }) => {
   const [isOpen, setIsOpen] = useState(false);
   function toggleIsOpen() {
     setIsOpen(!isOpen);
   }
   const handleChange = (e) => {
-    if (cityFranIds.includes(e)) {
-      const newValue = city.concat(e);
-      setForm(newValue);
-    }
+    const newValue = city.concat(e);
+    setForm(newValue);
   };
 
   function deleteCity(item) {

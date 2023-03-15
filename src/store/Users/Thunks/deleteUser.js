@@ -1,8 +1,10 @@
+import { URL } from "../../../assets/constants/Fixtires";
 import { loadUsers } from "./loadUsers";
 
 export const loadDeleteUser =
   ({ id }) =>
   (dispatch) => {
+    const apiURL = URL.concat("deleteUser");
     const options = {
       method: "POST",
       headers: {
@@ -13,7 +15,7 @@ export const loadDeleteUser =
       }),
     };
 
-    fetch("https://wsuno.xyz/api/deleteUser", options)
+    fetch(apiURL, options)
       .then((res) => res.json())
       .then((data) => {
         if (!data.OK) {

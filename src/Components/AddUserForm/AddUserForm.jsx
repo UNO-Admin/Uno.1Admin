@@ -67,7 +67,7 @@ export const AddUserForm = ({ togglePopup }) => {
       <InputText
         value={form.name}
         name={"name"}
-        label={"Наименование"}
+        label={"Имя"}
         setValue={handleChange}
       />
       <InputText
@@ -85,7 +85,6 @@ export const AddUserForm = ({ togglePopup }) => {
       <div className={styles.input_wrapper}>
         <InputDataSelect
           city={form.city}
-          cityFranIds={cityFranIds}
           setForm={(e) => setForm({ ...form, city: e })}
           label={"Город"}
           availableCities={availableCities}

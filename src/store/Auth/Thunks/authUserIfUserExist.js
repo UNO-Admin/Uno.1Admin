@@ -1,7 +1,9 @@
 import { authSliceActions } from "..";
+import { URL } from "../../../assets/constants/Fixtires";
 
 export const authUserIfUserExist = (userData) => (dispatch) => {
   const { email, password } = userData;
+  const apiURL = URL.concat("authUser");
   const options = {
     method: "POST",
     headers: {
@@ -14,7 +16,7 @@ export const authUserIfUserExist = (userData) => (dispatch) => {
   };
   dispatch(authSliceActions.startLoadingUser());
 
-  fetch("https://wsuno.xyz/api/authUser", options)
+  fetch(apiURL, options)
     .then((res) => res.json())
     .then((data) => {
       if (!data.OK) {

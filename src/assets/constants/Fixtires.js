@@ -31,3 +31,5 @@ export const PERIOD_VALUES = [
   { label: "1 год", value: 12 },
   { label: "Навсегда", value: 36 },
 ];
+
+export const URL = "https://ws.1uno.kz/api/";

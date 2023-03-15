@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 type InputProps = {
   label: string;
   value: string;
-  setValue: (event) => void;
+  setValue: () => void;
   name: string;
 };
 

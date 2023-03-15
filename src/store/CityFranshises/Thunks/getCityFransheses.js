@@ -1,4 +1,5 @@
 import { cityFranshisesSliceActions } from "..";
+import { URL } from "../../../assets/constants/Fixtires";
 import { normolizeEntities } from "../../helpers/normalizeEntites";
 import { selectCityFranshisesIds } from "../selectors";
 
@@ -8,6 +9,7 @@ export const getCityFransheses =
     if (selectCityFranshisesIds(getState())?.length > 0) {
       return;
     }
+    const apiURL = URL.concat("getcityfran");
     const options = {
       method: "POST",
       headers: {
@@ -19,7 +21,7 @@ export const getCityFransheses =
     };
     dispatch(cityFranshisesSliceActions.startLoading());
 
-    fetch("https://wsuno.xyz/api/getcityfran", options)
+    fetch(apiURL, options)
       .then((res) => res.json())
       .then((data) => {
         if (!data.OK) {

@@ -8,8 +8,14 @@
   text-decoration: none;
 }
 
+.button:disabled, .button:disabled:hover{
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
 .form_submit {
-  background-color: #0353a4;
+  background-color: rgb(3, 83, 164);
   min-width: 346px;
   line-height: 22px;
   font-family: "Inter";

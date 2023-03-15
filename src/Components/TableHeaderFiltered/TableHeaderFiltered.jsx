@@ -6,7 +6,6 @@ import { selectObjectData } from "../../store/Objects/selectors";
 import { SearchBarContainer } from "../../Containers/SearchBarContainer/SearchBarContainer";
 import { SelectHeaderContainer } from "../../Containers/SelectHeaderContainer/SelectHeaderContainer";
 import { FilterDateSelectContainer } from "../../Containers/FilterDateSelectContainer/FilterDateSelectContainer";
-import { SelectHeaderContainerColorable } from "../../Containers/SelectHeaderContainerColorable/SelectHeaderContainerColorable";
 
 export const TableHeaderFiltered = ({ headers }) => {
   const objects = useSelector((state) => selectObjectData(state));
@@ -18,7 +17,7 @@ export const TableHeaderFiltered = ({ headers }) => {
   ];
 
   const availableIds = [
-    { value: 0, label: "Не активен" },
+    { value: 0, label: "0 мес." },
     { value: 1, label: "<1 мес." },
     { value: 2, label: ">1 мес." },
   ];
@@ -36,7 +35,7 @@ export const TableHeaderFiltered = ({ headers }) => {
                   styles.table_cell__header
                 )}
               >
-                <SelectHeaderContainerColorable
+                <SelectHeaderContainer
                   availableValues={availableIds}
                   name={"IDSRV"}
                   label={"ID"}

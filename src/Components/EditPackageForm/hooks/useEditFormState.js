@@ -13,13 +13,13 @@ export const useEditFormState = ({ minDate }) => {
       klv: 0,
     },
     tarifiation: {
-      ID: 4,
+      ID: 5,
       klv: 0,
     },
     waiter: {
       klv: 0,
       period: 1,
-      ID: 5,
+      ID: 4,
     },
     qr: {
       klv: 0,

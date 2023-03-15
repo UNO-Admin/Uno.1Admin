@@ -1,9 +1,11 @@
 import { objectsSliceActions } from "..";
+import { URL } from "../../../assets/constants/Fixtires";
 import { normolizeEntities } from "../../helpers/normalizeEntites";
 
 export const getObjects =
   ({ userId }) =>
   (dispatch) => {
+    const apiURL = URL.concat("getObjects");
     const options = {
       method: "POST",
       headers: {
@@ -15,9 +17,7 @@ export const getObjects =
     };
     dispatch(objectsSliceActions.startLoading());
 
-    const url = new URL("https://wsuno.xyz/api/getObjects");
-
-    fetch(url, options)
+    fetch(apiURL, options)
       .then((res) => res.json())
       .then((data) => {
         if (!data.OK) {

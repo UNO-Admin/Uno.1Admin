@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, useNavigate, Routes } from "react-router-dom";
 import { ROUTES } from "../../assets/constants/Fixtires";
 import { Menu } from "../../Components/Menu/Menu";
 import { useToggleState } from "../../hooks/UseToggleState";

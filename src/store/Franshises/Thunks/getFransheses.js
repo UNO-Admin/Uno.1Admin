@@ -1,9 +1,11 @@
 import { franshisesSliceActions } from "..";
+import { URL } from "../../../assets/constants/Fixtires";
 import { normolizeEntities } from "../../helpers/normalizeEntites";
 
 export const getFransheses =
   ({ userId }) =>
   (dispatch) => {
+    const apiURL = URL.concat("getFransheses");
     const options = {
       method: "POST",
       headers: {
@@ -15,7 +17,7 @@ export const getFransheses =
     };
     dispatch(franshisesSliceActions.startLoading());
 
-    fetch("https://wsuno.xyz/api/getFransheses", options)
+    fetch(apiURL, options)
       .then((res) => res.json())
       .then((data) => {
         if (!data.OK) {

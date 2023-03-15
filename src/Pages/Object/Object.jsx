@@ -10,7 +10,7 @@ import { Table } from "../../Components/Table/Table";
 import { TableHeader } from "../../Components/TableHeader/TableHeader";
 import { UserData } from "../../Components/UserData/UserData";
 import { ObjectInfoContainer } from "../../Containers/ObjectInfoContainer/ObjectInfoContainer";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useInfoEntities } from "./hooks/useInfoEntities.ts";
 import { ROUTES } from "../../assets/constants/Fixtires";
 import { getHistoryObjectIfNotExist } from "../../store/ObjectHistory/Thunks/getHistoryObjectIfNotExist";
@@ -26,6 +26,8 @@ import { getPackagePrices } from "../../store/ObjectPrices/Thunks/getPackagePric
 import { AddPackageForm } from "../../Components/AddPackageForm/AddPackageForm";
 import { getMaxDate } from "../../helpers/getMaxDate.ts";
 import { getMinDate } from "../../helpers/getMinDate.ts";
+import { useNavigate } from "react-router-dom";
+import { LicenseManager } from "../../Components/LicenseManager/LicenseManager.tsx";
 const images = [back, edit];
 const HISTORY_HEADERS = [
   "Дата операции",
@@ -41,6 +43,7 @@ export const Object = () => {
   const { id } = useParams();
   const [isPopupOpened, setIsPopupOpened] = useToggleState(false);
   const [isAddPopupOpened, setIsAddPopupOpened] = useToggleState(false);
+  const [isLicensePopupOpened, setIsLicensePopupOpened] = useToggleState(false);
   const objectData = useSelector((state) => selectObjectById(state, { id }));
   const history = useSelector((state) =>
     selectObjectHistoryById(state, { id })
@@ -58,6 +61,7 @@ export const Object = () => {
       : false;
 
   useEffect(() => {
+    setIsLicensePopupOpened(false);
     if (!objectData) {
       dispatch(getObjects({ userId: localStorage.userId / 1 }));
     } else {
@@ -93,9 +97,12 @@ export const Object = () => {
           {status() ? (
             <div className={styles.status_element}>
               <h2 className={styles.title}>Статус</h2>
-              <div className={classNames(styles.status_info)}>
+              <button
+                className={classNames(styles.status_info)}
+                onClick={() => setIsLicensePopupOpened()}
+              >
                 {status() ? "Активен" : "Пакет не активен"}
-              </div>
+              </button>
             </div>
           ) : (
             <div className={styles.status_element}>
@@ -124,6 +131,11 @@ export const Object = () => {
         {isAddPopupOpened && (
           <PopupContainer togglePopup={setIsAddPopupOpened}>
             <AddPackageForm togglePopup={setIsAddPopupOpened} />
+          </PopupContainer>
+        )}
+        {isLicensePopupOpened && (
+          <PopupContainer togglePopup={setIsLicensePopupOpened}>
+            <LicenseManager TMPCODE={objectData.TMPCODE} id={id} />
           </PopupContainer>
         )}
         {history.length > 0 && (

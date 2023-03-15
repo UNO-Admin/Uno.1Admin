@@ -21,7 +21,7 @@ export const InputSelect = ({
         placeholder=" "
         onChange={setForm}
       >
-        {mapValues?.map((el) => (
+        {mapValues.map((el) => (
           <Option key={nanoid()} label={el.label} value={el.value} />
         ))}
       </select>

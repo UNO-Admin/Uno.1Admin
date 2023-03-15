@@ -15,11 +15,11 @@ import { EditUserForm } from "../../Components/EditUserForm/EditUserForm";
 import { Table } from "../../Components/Table/Table";
 import { ButtonBar } from "../../Components/ButtonsBar/ButtonsBar";
 import { DeletePopup } from "../../Components/DeletePopup/DeletePopup";
-import { useNavigate } from "react-router-dom";
 import { TableHeader } from "../../Components/TableHeader/TableHeader";
 import { ROUTES } from "../../assets/constants/Fixtires";
 import { useToggleState } from "../../hooks/UseToggleState";
 import { Loading } from "../../Widgets/Loading/Loading";
+import { useNavigate } from "react-router-dom";
 
 const USER_HEADERS = [
   "#",

@@ -1,8 +1,10 @@
+import { URL } from "../../../assets/constants/Fixtires";
 import { getObjects } from "./getObjects";
 
 export const addObject =
   ({ userId, idFran, name, worker, phone, orgOwner, dt }) =>
   (dispatch) => {
+    const apiURL = URL.concat("addObject");
     const options = {
       method: "POST",
       headers: {
@@ -19,13 +21,9 @@ export const addObject =
       }),
     };
 
-    const url = new URL("https://wsuno.xyz/api/addObject");
-    console.log(options.body);
-
-    fetch(url, options)
+    fetch(apiURL, options)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (!data.OK) {
           throw Error(data.error);
         }

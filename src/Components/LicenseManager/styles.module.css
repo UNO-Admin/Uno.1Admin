@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+}
+
+.license {
+  color: black;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.copy {
+  width: 19px;
+  height: 19px;
+  background-image: url('../../assets/images/copy.svg');
+  border-radius: 5px;
+  background-size: cover;
+  background-color: inherit;
+}
+
+.copy:active {
+  background-color: lightgray;
+}

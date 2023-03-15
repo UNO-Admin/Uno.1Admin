@@ -1,6 +1,5 @@
 import styles from "./styles.module.css";
 import classNames from "classnames";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import usersIMG from "../../assets/images/person.svg";
 import objectIMG from "../../assets/images/domain.svg";
@@ -9,6 +8,7 @@ import { authSliceActions } from "../../store/Auth";
 import { selectUserName } from "../../store/Auth/selectors";
 import { Tab } from "../Tab/Tab";
 import { FOLDERS, ROUTES } from "../../assets/constants/Fixtires";
+import { useNavigate } from "react-router-dom";
 
 export const Menu = ({ asideIsOpened }) => {
   const userAccess = localStorage.userIdAccess;
