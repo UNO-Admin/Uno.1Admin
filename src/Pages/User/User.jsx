@@ -8,6 +8,7 @@ import { TableHeader } from "../../Components/TableHeader/TableHeader";
 import styles from "./styles.module.css";
 import { nanoid } from "nanoid";
 import { UserHistoryContainer } from "../../Containers/UserHistoryContainer/UserHistoryContainer";
+import { USER_HISTORY_HEADERS } from "../../assets/constants/Fixtires";
 
 export const User = () => {
   const dispatch = useDispatch();
@@ -15,13 +16,7 @@ export const User = () => {
   useEffect(() => {
     dispatch(getHistoryUserIfNotExist({ id }));
   }, [id]);
-  const userHistoryHeaders = [
-    "Дата операции",
-    "Пользователь",
-    "Точка",
-    "Тип операции",
-    "Сумма",
-  ];
+
   const userHistoryData = useSelector((state) =>
     selectUserHistoryById(state, { id })
   );
@@ -39,7 +34,7 @@ export const User = () => {
   return (
     <div className={styles.user}>
       <Table>
-        <TableHeader headers={userHistoryHeaders} />
+        <TableHeader headers={USER_HISTORY_HEADERS} />
         {userHistoryDataArray?.map((el, idx) => (
           <UserHistoryContainer key={nanoid()} data={el} id={objIds[idx]} />
         ))}

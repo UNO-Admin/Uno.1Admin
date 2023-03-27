@@ -1,10 +1,11 @@
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { SelectedCity } from "../SelectedCities/SelectedCities";
 
 export const InputDataSelect = ({ setForm, label, availableCities, city }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef(null);
   function toggleIsOpen() {
     setIsOpen(!isOpen);
   }
@@ -18,8 +19,19 @@ export const InputDataSelect = ({ setForm, label, availableCities, city }) => {
     setForm(newCityValue);
   }
 
+  const onClickOutsideHandler = (e) => {
+    if (isOpen && !ref.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", onClickOutsideHandler);
+    return () => window.removeEventListener("click", onClickOutsideHandler);
+  }, [city]);
+
   return (
-    <div className={styles.input_container}>
+    <div className={styles.input_container} ref={ref}>
       <div
         onClick={() => toggleIsOpen()}
         onChange={handleChange}

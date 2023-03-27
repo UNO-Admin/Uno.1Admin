@@ -11,6 +11,7 @@
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
+  overflow-x: scroll;
 }
 
 .objects div:nth-child(1) div:nth-child(1) div:nth-child(1) p {

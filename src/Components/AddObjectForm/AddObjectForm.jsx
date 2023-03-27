@@ -46,7 +46,7 @@ export const AddObjectForm = ({ togglePopup }) => {
 
   const [form, setForm] = useState({
     name: "",
-    idFran: franshisesMap[0]?.value || 1,
+    idFran: franshisesMap[0]?.value,
     orgOwner: "",
     phone: "",
     worker: "",

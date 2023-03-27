@@ -36,7 +36,7 @@ export const FormElement = () => {
   const user = localStorage.userId;
   useEffect(() => {
     if (user) {
-      navigate(userIdAccess != 3 ? ROUTES.users : ROUTES.objects);
+      navigate(userIdAccess != 4 ? ROUTES.users : ROUTES.objects);
     }
     setValidate({ ...validate, isValid: true });
   }, [isSuccessAuth]);

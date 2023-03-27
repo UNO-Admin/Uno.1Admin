@@ -66,6 +66,12 @@ export const Users = () => {
     }
   };
 
+  const buttonBarOnClicks = [
+    setIsPopupOpened,
+    setIsEditPopupOpened,
+    setIsDeletePopupOpened,
+  ];
+
   if (isLoading) {
     return <Loading />;
   }
@@ -86,14 +92,7 @@ export const Users = () => {
           );
         })}
       </Table>
-      <ButtonBar
-        onClicks={[
-          setIsPopupOpened,
-          setIsEditPopupOpened,
-          setIsDeletePopupOpened,
-        ]}
-        disabled={!isRowSelected}
-      />
+      <ButtonBar onClicks={buttonBarOnClicks} disabled={!isRowSelected} />
       {isPopupOpened && (
         <PopupContainer togglePopup={setIsPopupOpened}>
           <AddUserForm togglePopup={setIsPopupOpened} />

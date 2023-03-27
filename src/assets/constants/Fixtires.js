@@ -33,3 +33,11 @@ export const PERIOD_VALUES = [
 ];
 
 export const URL = "https://ws.1uno.kz/api/";
+
+export const USER_HISTORY_HEADERS = [
+  "Дата операции",
+  "Пользователь",
+  "Точка",
+  "Тип операции",
+  "Сумма",
+];

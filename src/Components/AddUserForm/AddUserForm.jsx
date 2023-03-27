@@ -17,6 +17,7 @@ import {
 import { InputDataSelect } from "../InputDataList/InputDataSelect";
 import { onSubmit } from "./helpers/onSubmit";
 import { nanoid } from "nanoid";
+import { sortCities } from "./helpers/sortCities";
 
 export const AddUserForm = ({ togglePopup }) => {
   const cityFranIds = useSelector((state) => selectCityFranshisesIds(state));
@@ -42,8 +43,9 @@ export const AddUserForm = ({ togglePopup }) => {
     validate: undefined,
     errorMessage: " ",
   };
-
-  const availableCities = cityFranIds.filter((el) => !form.city.includes(el));
+  const availableCities = cityFranIds
+    .filter((el) => !form.city.includes(el))
+    .sort(sortCities);
 
   const [validate, setValidate] = useState(initialValidate);
   useEffect(() => {
