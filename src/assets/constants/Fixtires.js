@@ -13,7 +13,7 @@ export const ROUTES = {
   profile: "/profile",
   user: "/users/:id",
   object: "/objects/:id",
-  recover: "recover/:hash",
+  recover: "recover/:secretkey",
   forgot: "forgot",
 };
 

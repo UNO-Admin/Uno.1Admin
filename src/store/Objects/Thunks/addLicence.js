@@ -21,8 +21,6 @@ export const addLicence = ({ params }) => {
     }),
   };
 
-  console.log(options.body);
-
   fetch(apiURL, options)
     .then((res) => res.json())
     .then((data) => {

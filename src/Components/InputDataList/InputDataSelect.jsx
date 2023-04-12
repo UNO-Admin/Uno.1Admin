@@ -20,7 +20,7 @@ export const InputDataSelect = ({ setForm, label, availableCities, city }) => {
   }
 
   const onClickOutsideHandler = (e) => {
-    if (isOpen && !ref.current.contains(e.target)) {
+    if (!ref.current.contains(e.target)) {
       setIsOpen(false);
     }
   };
@@ -28,7 +28,7 @@ export const InputDataSelect = ({ setForm, label, availableCities, city }) => {
   useEffect(() => {
     window.addEventListener("click", onClickOutsideHandler);
     return () => window.removeEventListener("click", onClickOutsideHandler);
-  }, [city]);
+  }, []);
 
   return (
     <div className={styles.input_container} ref={ref}>

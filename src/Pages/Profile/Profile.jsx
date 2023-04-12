@@ -11,7 +11,7 @@ import classNames from "classnames";
 import { InputPass } from "../../UI/InputPass/InputPass";
 import { FormElem } from "../../Components/FormElem/FormElem";
 
-export const Profile = () => {
+const Profile = () => {
   const dispatch = useDispatch();
   const initialValidate = {
     validate: true,
@@ -119,3 +119,5 @@ export const Profile = () => {
     </div>
   );
 };
+
+export default Profile;

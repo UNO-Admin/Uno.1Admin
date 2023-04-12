@@ -7,7 +7,7 @@ export const InputPhone = ({ label, value, setValue, name }) => {
         name={name}
         autoComplete="new-password"
         id={label}
-        type="number"
+        type="text"
         className={styles.form_input}
         placeholder=" "
         value={value}

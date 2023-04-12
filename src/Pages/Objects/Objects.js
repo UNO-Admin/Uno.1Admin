@@ -31,7 +31,7 @@ const OBJECT_HEADERS = [
   "Баланс",
 ];
 
-export const Objects = () => {
+const Objects = () => {
   const dispatch = useDispatch();
   const userId = localStorage.userId;
   useSingleEffect(() => {
@@ -64,3 +64,5 @@ export const Objects = () => {
     </div>
   );
 };
+
+export default Objects;

@@ -9,8 +9,8 @@ export function InputDate({ date, setDate, selectRange = false, label }) {
   const ref = useRef(null);
 
   const onClickOutsideHandler = (e) => {
-    if (isOpen && !ref.current.contains(e.target)) {
-      setIsOpen();
+    if (!ref.current.contains(e.target)) {
+      setIsOpen(false);
     }
   };
 

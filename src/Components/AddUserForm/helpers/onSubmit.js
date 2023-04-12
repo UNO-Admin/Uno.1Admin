@@ -1,7 +1,9 @@
-import { isEmpty, isEmail, isMobilePhone } from "validator";
+import { isEmpty, isEmail } from "validator";
+import { isValidPhone } from "../../../helpers/isValidPhone";
 
 const handleValidate = (form, setValidate) => {
   const { email, name, phone, pass } = form;
+
   if (isEmpty(email) || isEmpty(phone) || isEmpty(pass) || isEmpty(name)) {
     setValidate({
       isValid: false,
@@ -12,7 +14,7 @@ const handleValidate = (form, setValidate) => {
       isValid: false,
       errorMessage: "Неверный формат почты",
     });
-  } else if (!isMobilePhone(phone) || phone.length < 10 || phone.length > 14) {
+  } else if (phone.length < 10 || phone.length > 14 || !isValidPhone(phone)) {
     setValidate({
       isValid: false,
       errorMessage: "Неверный номер телефона",

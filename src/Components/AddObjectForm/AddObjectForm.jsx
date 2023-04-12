@@ -5,13 +5,14 @@ import { selectFranshises } from "../../store/Franshises/selectors";
 import { addObject } from "../../store/Objects/Thunks/addObject";
 import { FormElem } from "../FormElem/FormElem";
 import styles from "./styles.module.css";
-import { isEmpty, isMobilePhone } from "validator";
+import { isEmpty } from "validator";
 import { InputText } from "../../UI/InputText/InputText.tsx";
 import { InputSelect } from "../../UI/InputSelect/InputSelect";
 import { InputPhone } from "../../UI/InputPhone/InputPhone";
 import { useSingleEffect } from "../../hooks/UseSingleEffect";
 import { getFransheses } from "../../store/Franshises/Thunks/getFransheses";
 import { InputDate } from "../../UI/InputDate/InputDate";
+import { isValidPhone } from "../../helpers/isValidPhone";
 
 export const AddObjectForm = ({ togglePopup }) => {
   const userId = localStorage.userId;
@@ -46,7 +47,7 @@ export const AddObjectForm = ({ togglePopup }) => {
 
   const [form, setForm] = useState({
     name: "",
-    idFran: franshisesMap[0]?.value,
+    idFran: franshisesMap[0]?.value || " ",
     orgOwner: "",
     phone: "",
     worker: "",
@@ -65,7 +66,7 @@ export const AddObjectForm = ({ togglePopup }) => {
         errorMessage: "Необходимо заполнить все поля",
         isValid: false,
       });
-    } else if (!isMobilePhone(form.phone) || form.phone.length < 10) {
+    } else if (!isValidPhone(form.phone) || form.phone.length < 10) {
       setValidate({
         errorMessage: "Неверный формат номера телефона",
         isValid: false,

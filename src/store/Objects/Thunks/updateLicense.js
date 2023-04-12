@@ -14,7 +14,6 @@ export const updateLicense =
         id: id / 1,
       }),
     };
-    console.log(options.body);
 
     fetch(apiURL, options)
       .then((res) => res.json())

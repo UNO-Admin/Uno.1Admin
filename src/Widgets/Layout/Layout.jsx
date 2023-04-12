@@ -1,15 +1,17 @@
 import classNames from "classnames";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Route, useNavigate, Routes } from "react-router-dom";
 import { ROUTES } from "../../assets/constants/Fixtires";
 import { Menu } from "../../Components/Menu/Menu";
 import { useToggleState } from "../../hooks/UseToggleState";
 import { Object } from "../../Pages/Object/Object";
-import { Objects } from "../../Pages/Objects/Objects";
-import { Profile } from "../../Pages/Profile/Profile";
 import { User } from "../../Pages/User/User";
-import { Users } from "../../Pages/Users/Users";
+import { Loading } from "../Loading/Loading";
 import styles from "./styles.module.css";
+
+const Users = lazy(() => import("../../Pages/Users/Users"));
+const Profile = lazy(() => import("../../Pages/Profile/Profile"));
+const Objects = lazy(() => import("../../Pages/Objects/Objects"));
 
 export const Layout = () => {
   const navigate = useNavigate();
@@ -40,13 +42,15 @@ export const Layout = () => {
           [styles.content_moved]: !asideIsOpened,
         })}
       >
-        <Routes>
-          <Route path={ROUTES.users} element={<Users />} />
-          <Route path={ROUTES.profile} element={<Profile />} />
-          <Route path={ROUTES.objects} element={<Objects />} />
-          <Route path={ROUTES.object} element={<Object />} />
-          <Route path={ROUTES.user} element={<User />} />
-        </Routes>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path={ROUTES.users} element={<Users />} />
+            <Route path={ROUTES.profile} element={<Profile />} />
+            <Route path={ROUTES.objects} element={<Objects />} />
+            <Route path={ROUTES.object} element={<Object />} />
+            <Route path={ROUTES.user} element={<User />} />
+          </Routes>
+        </Suspense>
       </section>
     </div>
   );

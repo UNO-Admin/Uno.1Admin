@@ -31,7 +31,7 @@ const USER_HEADERS = [
   "Баланс",
 ];
 
-export const Users = () => {
+const Users = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => selectUsersIsLoading(state));
@@ -117,3 +117,5 @@ export const Users = () => {
     </div>
   );
 };
+
+export default Users;
