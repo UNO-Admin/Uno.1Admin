@@ -10,7 +10,7 @@ export function SelectedCity({ id, onclick }) {
 
   return (
     <div className={styles.container}>
-      {NAME.substr(0, NAME.indexOf("("))}
+      {NAME.includes("(") ? NAME.substr(0, NAME.indexOf("(")) : NAME}
       <button
         type="button"
         className={styles.delete}

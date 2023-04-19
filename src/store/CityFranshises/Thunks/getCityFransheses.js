@@ -1,14 +1,10 @@
 import { cityFranshisesSliceActions } from "..";
 import { URL } from "../../../assets/constants/Fixtires";
 import { normolizeEntities } from "../../helpers/normalizeEntites";
-import { selectCityFranshisesIds } from "../selectors";
 
 export const getCityFransheses =
   ({ userId }) =>
-  (dispatch, getState) => {
-    if (selectCityFranshisesIds(getState())?.length > 0) {
-      return;
-    }
+  (dispatch) => {
     const apiURL = URL.concat("getcityfran");
     const options = {
       method: "POST",

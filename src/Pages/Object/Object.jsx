@@ -54,11 +54,15 @@ export const Object = () => {
   const ENDDT = getMaxDate(endDates);
   const STARTDT = getMinDate(startDates);
 
-  const infoEntities = useInfoEntities({ ...objectData, ENDDT, STARTDT });
   const status = () =>
-    objectData?.lic.length > 0
-      ? ENDDT > Date.now() && STARTDT < Date.now()
-      : false;
+    objectData?.lic.length && ENDDT >= Date.now() && STARTDT <= Date.now();
+
+  const infoEntities = useInfoEntities({
+    ...objectData,
+    ENDDT,
+    STARTDT,
+    status: status(),
+  });
 
   useEffect(() => {
     setIsLicensePopupOpened(false);

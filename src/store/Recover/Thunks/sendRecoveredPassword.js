@@ -17,7 +17,6 @@ export const sendRecoveredPassword = async ({ password, secretkey }) => {
   try {
     const response = await fetch(apiIUL, options);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (err) {
     console.log(err);

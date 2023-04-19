@@ -49,7 +49,9 @@ export const AddUserForm = ({ togglePopup }) => {
 
   const [validate, setValidate] = useState(initialValidate);
   useEffect(() => {
-    dispatch(getCityFransheses({ userId }));
+    if (userIdAccess == 1) {
+      dispatch(getCityFransheses({ userId: 1 }));
+    } else dispatch(getCityFransheses({ userId }));
   }, [userId]);
   useEffect(() => {
     if (validate.errorMessage.length < 5 && form.phone.length > 8) {
@@ -84,14 +86,12 @@ export const AddUserForm = ({ togglePopup }) => {
         label={"Телефон"}
         setValue={handleChange}
       />
-      <div className={styles.input_wrapper}>
-        <InputDataSelect
-          city={form.city}
-          setForm={(e) => setForm({ ...form, city: e })}
-          label={"Город"}
-          availableCities={availableCities}
-        />
-      </div>
+      <InputDataSelect
+        city={form.city}
+        setForm={(e) => setForm({ ...form, city: e })}
+        label={"Город"}
+        availableCities={availableCities}
+      />
       <InputPass
         value={form.pass}
         name={"pass"}

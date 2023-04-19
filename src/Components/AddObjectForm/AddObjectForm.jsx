@@ -9,8 +9,6 @@ import { isEmpty } from "validator";
 import { InputText } from "../../UI/InputText/InputText.tsx";
 import { InputSelect } from "../../UI/InputSelect/InputSelect";
 import { InputPhone } from "../../UI/InputPhone/InputPhone";
-import { useSingleEffect } from "../../hooks/UseSingleEffect";
-import { getFransheses } from "../../store/Franshises/Thunks/getFransheses";
 import { InputDate } from "../../UI/InputDate/InputDate";
 import { isValidPhone } from "../../helpers/isValidPhone";
 
@@ -23,9 +21,7 @@ export const AddObjectForm = ({ togglePopup }) => {
   };
   const franshises = useSelector((state) => selectFranshises(state));
   const [validate, setValidate] = useState(initialValidate);
-  useSingleEffect(() => {
-    dispatch(getFransheses({ userId }));
-  }, [userId]);
+
   useEffect(() => {
     if (validate.errorMessage.length < 5 && form.phone.length > 7) {
       dispatch(addObject({ ...form, dt: formatDate(form.dt), userId }));
@@ -47,7 +43,7 @@ export const AddObjectForm = ({ togglePopup }) => {
 
   const [form, setForm] = useState({
     name: "",
-    idFran: franshisesMap[0]?.value || " ",
+    idFran: franshisesMap[0]?.value,
     orgOwner: "",
     phone: "",
     worker: "",

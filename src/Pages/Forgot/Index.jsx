@@ -7,35 +7,12 @@ import { Link } from "react-router-dom";
 import { sendRecoveryRequest } from "../../store/Recover/Thunks/sendRecoveryRequest";
 
 export function Forgot() {
-  // const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  // const [validate, setValidate] = useState({
-  //   isValid: true,
-  //   errorMessage: " ",
-  // });
-
-  // function handleValidate() {
-  //   if (isEmpty(email)) {
-  //     setValidate({
-  //       isValid: false,
-  //       errorMessage: "Введите логин для восстановления пароля",
-  //     });
-  //   } else if (!isEmail(email)) {
-  //     setValidate({
-  //       isValid: false,
-  //       errorMessage: "Неверный формат электронной почты",
-  //     });
-  //   } else {
-  //     setValidate({ isValid: true, errorMessage: " " });
-  //   }
-  // }
   function onSubmit(e) {
     e.preventDefault();
-    sendRecoveryRequest({ email }).then((res) => {
-      if (res.OK) {
-        setIsSuccess(true);
-      }
+    sendRecoveryRequest({ email }).then(() => {
+      setIsSuccess(true);
     });
   }
   return (

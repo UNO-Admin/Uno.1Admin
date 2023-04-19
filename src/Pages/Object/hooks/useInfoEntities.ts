@@ -14,10 +14,11 @@ interface ObjectData {
   FRAN_NAME: string;
   STARTDT?: Date;
   ENDDT?: Date;
+  status: boolean;
 }
 
 export function useInfoEntities(objectData: ObjectData) {
-  const { DT, NAME, WORKER, CITY, PHONE, FRAN_NAME, STARTDT, ENDDT } =
+  const { DT, NAME, WORKER, CITY, PHONE, FRAN_NAME, STARTDT, ENDDT, status } =
     objectData || {};
 
   const { months, leftDays } = getLeftTime({
@@ -70,12 +71,16 @@ export function useInfoEntities(objectData: ObjectData) {
       {
         img: timerIcon,
         title: "Начало",
-        content: STARTDT?.toLocaleString().slice(0, 10) || "Пакет не активен",
+        content: status
+          ? STARTDT?.toLocaleString().slice(0, 10)
+          : "Пакет не активен",
       },
       {
         img: endtimerIcon,
         title: "Конец",
-        content: ENDDT?.toLocaleString().slice(0, 10) || "Пакет не активен",
+        content: status
+          ? ENDDT?.toLocaleString().slice(0, 10)
+          : "Пакет не активен",
       },
       {
         img: timerIcon,

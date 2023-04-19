@@ -2,9 +2,15 @@ import { isEmpty, isEmail } from "validator";
 import { isValidPhone } from "../../../helpers/isValidPhone";
 
 const handleValidate = (form, setValidate) => {
-  const { email, name, phone, pass } = form;
+  const { email, name, phone, pass, city } = form;
 
-  if (isEmpty(email) || isEmpty(phone) || isEmpty(pass) || isEmpty(name)) {
+  if (
+    isEmpty(email) ||
+    isEmpty(phone) ||
+    isEmpty(pass) ||
+    isEmpty(name) ||
+    city.length === 0
+  ) {
     setValidate({
       isValid: false,
       errorMessage: "Пожалуйста, заполните все поля",

@@ -16,15 +16,15 @@ export const getLeftTime = ({
     };
   }
   const { months, days } = dateDiff({ start, end });
-  const leftDaysText =
-    days === 1
-      ? `${days} День`
-      : days >= 2 && days <= 4
-      ? `${days} Дня`
-      : `${days} Дней`;
+  const leftDaysText = days + " Д.";
+  // days === 1
+  //   ? `${days} День`
+  //   : days >= 2 && days <= 4
+  //   ? `${days} Дня`
+  //   : `${days} Дней`;
   const monthsText =
     months === 0
-      ? "Пакет не активен"
+      ? months
       : months === 1
       ? `${Math.floor(months)} Месяц`
       : months >= 2 && months <= 4

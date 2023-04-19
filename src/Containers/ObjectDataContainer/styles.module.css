@@ -10,13 +10,13 @@ tr.table_row__selected td {
 }
 
 .red td:first-of-type {
-  background-color: #f13d25 !important;
+  background-color: #d40306 !important;
 }
 
 .yellow td:first-of-type {
-  background-color: #fff50c !important;
+  background-color: #F5F200 !important;
 }
 
 .green td:first-of-type {
-  background-color: #25f176 !important;
+  background-color: #13BD63 !important;
 }

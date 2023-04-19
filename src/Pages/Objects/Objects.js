@@ -18,6 +18,7 @@ import { useToggleState } from "../../hooks/UseToggleState";
 import addImage from "../../assets/images/add.svg";
 import resetImage from "../../assets/images/reset filter.svg";
 import { Loading } from "../../Widgets/Loading/Loading";
+import { getFransheses } from "../../store/Franshises/Thunks/getFransheses";
 
 const images = [addImage, resetImage];
 
@@ -36,11 +37,14 @@ const Objects = () => {
   const userId = localStorage.userId;
   useSingleEffect(() => {
     dispatch(getObjects({ userId }));
+    dispatch(getFransheses({ userId }));
   }, []);
   const isLoading = useSelector((state) => selectObjectsIsLoading(state));
   const objectsIds = useSelector((state) => selectObjectsIds(state));
   const [isPopupOpened, setIsPopupOpened] = useToggleState(false);
   const resetFilter = () => dispatch(onjectFilterSliceActions.resetFilter());
+
+  useSingleEffect(() => {}, [userId]);
 
   if (isLoading) {
     return <Loading />;

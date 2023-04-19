@@ -13,8 +13,8 @@ export const EditUserForm = ({ togglePopup, id, resetSelectedRow }) => {
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: userData?.EMAIL || "",
-    phone: userData?.NAME || "",
-    name: userData?.PHONE || "",
+    phone: userData?.PHONE || "",
+    name: userData?.NAME || "",
   });
 
   const onSubmit = (event) => {
@@ -43,7 +43,7 @@ export const EditUserForm = ({ togglePopup, id, resetSelectedRow }) => {
         name={"name"}
         value={form.name}
         setValue={handleChange}
-        label={"Наименование"}
+        label={"Имя"}
       />
       <InputText
         name={"email"}
